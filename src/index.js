@@ -16,6 +16,7 @@ const renderApp = () => {
   );
 }
 
+// renderApp()
 KeycloakService.initKeycloak(renderApp)
 
 
