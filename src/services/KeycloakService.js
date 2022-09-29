@@ -6,7 +6,6 @@ const keycloak = new Keycloak('/keycloak.json');
  * Initializes Keycloak instance and calls the provided callback function if successfully authenticated.
 */
 const initKeycloak = (onAuthenticatedCallback) => {
-    let res = false;
     keycloak.init({
         onLoad: 'login-required',
         silentCheckSsoRedirectUri: window.location.origin + '/silent-check-sso.html',
@@ -19,7 +18,6 @@ const initKeycloak = (onAuthenticatedCallback) => {
         else{
             onAuthenticatedCallback();
         }
-        
     })
     .catch(console.error);
 };

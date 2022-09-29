@@ -1,6 +1,5 @@
 import React from 'react'
-import UserService from '../services/KeycloakService'
-import Resource from './Resource'
+import KeycloakService from '../services/KeycloakService'
 import { useState, useEffect } from 'react';
 import Keycloak from 'keycloak-js';
 
@@ -40,19 +39,17 @@ const Resources = () => {
     }
 
     useEffect(() => {
-        UserService.initKeycloak(loadResource)
+        KeycloakService.initKeycloak(loadResource)
     }, [])
 
     if (success) {
         return (
             <>
                 <p> Logged In </p>
-                <button onClick={() => UserService.logout()}> Logout </button>
+                <button onClick={() => KeycloakService.logout()}> Logout </button>
             </>
         )
     }
-
-    
 }
 
 export default Resources
