@@ -17,7 +17,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(calculateTotals())
-  }, [transactions])
+  }, [transactions, dispatch])
 
   useEffect(() => {
     dispatch(getTransactions())
