@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import { Typography } from '@mui/material';
 import Balance from './Balance';
 import IncomeExpense from './IncomeExpense';
+import AddTransaction from './AddTransaction';
 
 const Home = () => {
   return (
@@ -20,11 +21,12 @@ const Home = () => {
             width: 500,
             height: 500,
             backgroundColor: '#0277bd',
-            p: 2,
+            p: 3,
           }}>
 
           <Balance />
           <IncomeExpense />
+          <AddTransaction />
 
         </Box>
 

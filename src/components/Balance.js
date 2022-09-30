@@ -6,7 +6,7 @@ const Balance = () => {
     const { total } = useSelector((state) => state.account)
     return (
         <div>
-            <Typography variant='h6' color="common.white">
+            <Typography variant='h5' color="common.white">
                 Balance: $ {total}
             </Typography>
         </div>

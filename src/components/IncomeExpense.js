@@ -6,15 +6,16 @@ import { useSelector } from 'react-redux';
 import Box from '@mui/material/Box';
 
 const IncomeExpense = () => {
-    const { income } = useSelector((state) => state.account)
+    const { income, expenses } = useSelector((state) => state.account)
     return (
         <Box
             sx={{
                 display: 'flex',
+                flexDirection: 'row',
             }}>
-            <Card sx={{ maxWidth: 200, mt: 2 }}>
+            <Card sx={{ maxWidth: 200, mt: 2, mr: 2 }}>
                 <CardContent>
-                    <Typography variant='h6'>
+                    <Typography variant='h6' color="green">
                         Income: $ {income}
                     </Typography>
                 </CardContent>
@@ -22,8 +23,8 @@ const IncomeExpense = () => {
 
             <Card sx={{ maxWidth: 200, mt: 2 }}>
                 <CardContent>
-                    <Typography variant='h6'>
-                        Income: $ {income}
+                    <Typography variant='h6' color="red">
+                        Expenses: $ {expenses}
                     </Typography>
                 </CardContent>
             </Card>
