@@ -44,7 +44,7 @@ const Home = () => {
         <Box
           sx={{
             width: 500,
-            height: 600,
+            height: 625,
             backgroundColor: '#0277bd',
             p: 3,
           }}>
