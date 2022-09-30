@@ -24,7 +24,7 @@ const AddTransaction = () => {
                 }}
                 onSubmit={(values, actions) => {
                     dispatch(addTransaction({ title: values.title, amount: values.amount, type: values.picked }))
-                    dispatch(values.picked === "income" ? addIncome(values.amount) : addExpense(values.amount))
+                    // dispatch(values.picked === "income" ? addIncome(values.amount) : addExpense(values.amount))
                     actions.resetForm()
                 }}
             >

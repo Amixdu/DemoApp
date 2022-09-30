@@ -6,7 +6,6 @@ import { Provider } from 'react-redux';
 import { store } from './store';
 import KeycloakService from './services/KeycloakService'
 
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const renderApp = () => {
   root.render(
@@ -15,6 +14,7 @@ const renderApp = () => {
     </Provider>
   );
 }
+
 
 // renderApp()
 KeycloakService.initKeycloak(renderApp)

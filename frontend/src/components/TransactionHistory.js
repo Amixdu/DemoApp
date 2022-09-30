@@ -15,7 +15,7 @@ const TransactionHistory = ({ title, color, lastTransaction }) => {
                 {title}
             </Typography>
             {transactions.length > 0 ?
-                lastTransaction ? <Transaction transaction={transactions[0]} />
+                lastTransaction ? <Transaction transaction={transactions[transactions.length - 1]} />
                     : transactions.map(transaction => {
                         return <Transaction transaction={transaction} />
                     })

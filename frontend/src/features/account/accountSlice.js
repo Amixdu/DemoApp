@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    transactions: [{title: "test", amount: 100, type: "income"}],
-    total: 600,
-    income: 1000,
-    expenses: 400,
+    transactions: [],
+    total: 0,
+    income: 0,
+    expenses: 0,
     isLoading: true,
 }
 
@@ -17,11 +17,18 @@ const accountSlice = createSlice({
             state.income = 0;
             state.expenses = 0;
         },
+        getTransactions: (state) => {
+            state.isLoading = true
+        },
+        getTransactionsFinish: (state, action) => {
+            state.transactions = action.payload
+            state.isLoading = false
+        },
         addTransaction: (state, action) => {
             const type = action.payload.type
             const amount = action.payload.amount
             const title = action.payload.title
-            state.transactions = [{title, amount, type} , ...state.transactions]
+            state.transactions = [...state.transactions, {title, amount, type}]
         },
         addExpense:(state, action) => {
             const expenseAmt = action.payload
@@ -33,8 +40,25 @@ const accountSlice = createSlice({
             state.income += incomeAmt
             state.total += incomeAmt
         },
+        calculateTotals:(state)=> {
+            let tot = 0
+            let income = 0
+            let expenses = 0
+            state.transactions.forEach((transaction) => {
+                if (transaction.type === "income"){
+                    tot += transaction.amount
+                    income += transaction.amount
+                } else{
+                    tot = tot - transaction.amount
+                    expenses += transaction.amount
+                }
+            })
+            state.total = tot
+            state.income = income
+            state.expenses = expenses
+        },
     }
 })
 
-export const { clearAccount, addTransaction, addExpense, addIncome } = accountSlice.actions;
+export const { clearAccount, getTransactions, getTransactionsFinish, addTransaction, addExpense, addIncome, calculateTotals } = accountSlice.actions;
 export default accountSlice.reducer;
