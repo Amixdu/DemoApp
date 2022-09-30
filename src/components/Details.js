@@ -1,6 +1,7 @@
 import React from 'react'
 import KeycloakService from '../services/KeycloakService'
 import { Button } from '@mui/material'
+import TransactionHistory from './TransactionHistory'
 
 const Details = () => {
   return (
@@ -8,6 +9,7 @@ const Details = () => {
       <Button onClick={() => KeycloakService.logout()}>
         Logout
       </Button>
+      <TransactionHistory title="Transaction History" color="black"/>
     </div>
   )
 }
