@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 
 const Transaction = ({ transaction }) => {
     return (
-        <Card sx={{ maxWidth: 200 }}>
+        <Card sx={{ mb: 2, minWidth: 450 }}>
             <CardContent>
                 <Typography variant='h6' color={transaction.type === "income" ? "green" : "red"}>
                     {transaction.title + "   " + transaction.amount}

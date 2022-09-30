@@ -1,5 +1,4 @@
 import React from 'react'
-import KeycloakService from '../services/KeycloakService'
 import { Button } from '@mui/material'
 import TransactionHistory from './TransactionHistory'
 import { useEffect } from 'react'
@@ -26,12 +25,14 @@ const Details = () => {
   }
 
   return (
-    <div>
-      <Button onClick={() => KeycloakService.logout()}>
-        Logout
-      </Button>
+    <Box 
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      minHeight="89vh"
+    >
       <TransactionHistory title="Transaction History" color="black" />
-    </div>
+    </Box>
   )
 }
 

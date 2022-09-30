@@ -30,16 +30,6 @@ const accountSlice = createSlice({
             const title = action.payload.title
             state.transactions = [...state.transactions, {title, amount, type}]
         },
-        addExpense:(state, action) => {
-            const expenseAmt = action.payload
-            state.expenses += expenseAmt
-            state.total = state.total - expenseAmt
-        },
-        addIncome:(state, action) => {
-            const incomeAmt = action.payload
-            state.income += incomeAmt
-            state.total += incomeAmt
-        },
         calculateTotals:(state)=> {
             let tot = 0
             let income = 0
@@ -60,5 +50,5 @@ const accountSlice = createSlice({
     }
 })
 
-export const { clearAccount, getTransactions, getTransactionsFinish, addTransaction, addExpense, addIncome, calculateTotals } = accountSlice.actions;
+export const { clearAccount, getTransactions, getTransactionsFinish, addTransaction, calculateTotals } = accountSlice.actions;
 export default accountSlice.reducer;

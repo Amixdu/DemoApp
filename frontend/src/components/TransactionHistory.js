@@ -17,7 +17,7 @@ const TransactionHistory = ({ title, color, lastTransaction }) => {
             {transactions.length > 0 ?
                 lastTransaction ? <Transaction transaction={transactions[transactions.length - 1]} />
                     : transactions.map(transaction => {
-                        return <Transaction transaction={transaction} />
+                        return <Transaction key={transaction._id} transaction={transaction} />
                     })
                 : <Typography variant='h8' color={color}>No Transactions</Typography>}
         </Box>
