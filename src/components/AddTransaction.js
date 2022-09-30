@@ -2,9 +2,15 @@ import React from 'react';
 import { Formik } from 'formik';
 import { Typography } from '@mui/material';
 import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormField from './FormField';
+import { useDispatch } from 'react-redux';
+import { addExpense, addIncome } from '../features/account/accountSlice';
 
 const AddTransaction = () => {
+    const dispatch = useDispatch()
     return (
         <Box sx={{
             mt: 4
@@ -13,48 +19,38 @@ const AddTransaction = () => {
             <Formik
                 initialValues={{ 
                     title: '',
-                    amount: ''
+                    amount: '',
+                    picked: ''
                 }}
-                onSubmit={(values) => {
-                    console.log(values)
+                onSubmit={(values, actions) => {
+                    console.log(actions)
+                    const amt = values.amount;
+                    dispatch(values.picked === "income" ? addIncome(amt) : addExpense(amt))
+                    actions.resetForm()
                 }}
             >
                 {props => (
                     <form onSubmit={props.handleSubmit}>
-                        <TextField
-                            sx={{
-                                input: {
-                                  background: "white"
-                                },
-                                mb: 1
-                            }}
-                            label="Title" 
-                            variant="filled"
-                            type="text"
-                            onChange={props.handleChange}
-                            onBlur={props.handleBlur}
-                            value={props.values.title}
-                            name="title"
-                        />
+                        {console.log(props)}
+                        <FormField label="Title" type="text" change={props.handleChange} blur={props.handleBlur} value={props.values.title} name="title" />
                         <br />
-                        <TextField
-                            sx={{
-                                input: {
-                                    background: "white"
-                                },
-                                mb: 1
-                            }}
-                            label="Amount" 
-                            variant="filled"
-                            type="number"
-                            onChange={props.handleChange}
-                            onBlur={props.handleBlur}
-                            value={props.values.amount}
-                            name="amount"
-                        />
+                        <FormField label="Amount" type="number" change={props.handleChange} blur={props.handleBlur} value={props.values.amount} name="amount" />
                         <br />
+
+                        <RadioGroup row aria-labelledby="demo-row-radio-buttons-group-label" sx={{ color: "white"}}>
+                            <label>
+                                <Radio sx={{ color:"whitesmoke",  '&.Mui-checked':{color: "whitesmoke"}}} name="picked" value="income" onChange={props.handleChange}/>
+                                Income
+                            </label>
+                            <label>
+                                <Radio sx={{ color:"whitesmoke",  '&.Mui-checked':{color: "whitesmoke"}}} name="picked" value="expense" onChange={props.handleChange}/>
+                                Expense
+                            </label>
+                        </RadioGroup>
+                        <br />
+                        
                         {props.errors.title && <div id="feedback">{props.errors.title}</div>}
-                        <button type="submit">Submit</button>
+                        <Button type="submit" variant="contained" color="success">Submit</Button>
                     </form>
                 )}
             </Formik>
