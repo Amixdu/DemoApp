@@ -4,6 +4,7 @@ import { Typography } from '@mui/material';
 import Balance from './Balance';
 import IncomeExpense from './IncomeExpense';
 import AddTransaction from './AddTransaction';
+import TransactionHistory from './TransactionHistory';
 
 const Home = () => {
   return (
@@ -19,7 +20,7 @@ const Home = () => {
         <Box 
           sx={{
             width: 500,
-            height: 500,
+            height: 600,
             backgroundColor: '#0277bd',
             p: 3,
           }}>
@@ -27,6 +28,7 @@ const Home = () => {
           <Balance />
           <IncomeExpense />
           <AddTransaction />
+          <TransactionHistory />
 
         </Box>
 

@@ -1,12 +1,13 @@
 import React from 'react'
 import KeycloakService from '../services/KeycloakService'
+import { Button } from '@mui/material'
 
 const Details = () => {
   return (
     <div>
-      <button onClick={() => KeycloakService.logout()}>
+      <Button onClick={() => KeycloakService.logout()}>
         Logout
-      </button>
+      </Button>
     </div>
   )
 }

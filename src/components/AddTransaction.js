@@ -7,7 +7,7 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormField from './FormField';
 import { useDispatch } from 'react-redux';
-import { addExpense, addIncome } from '../features/account/accountSlice';
+import { addTransaction, addIncome, addExpense } from '../features/account/accountSlice';
 
 const AddTransaction = () => {
     const dispatch = useDispatch()
@@ -23,10 +23,8 @@ const AddTransaction = () => {
                     picked: 'income'
                 }}
                 onSubmit={(values, actions) => {
-                    // console.log(actions)
-                    const amt = values.amount;
-                    console.log(values.picked)
-                    dispatch(values.picked === "income" ? addIncome(amt) : addExpense(amt))
+                    dispatch(addTransaction({ title: values.title, amount: values.amount, type: values.picked }))
+                    dispatch(values.picked === "income" ? addIncome(values.amount) : addExpense(values.amount))
                     actions.resetForm()
                 }}
             >
