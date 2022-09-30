@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Transaction from './Transaction';
 import { Typography } from '@mui/material';
 
-const TransactionHistory = ({ title, color }) => {
+const TransactionHistory = ({ title, color, lastTransaction }) => {
     const { transactions } = useSelector((state) => state.account)
 
     return (
@@ -14,8 +14,11 @@ const TransactionHistory = ({ title, color }) => {
             <Typography variant='h6' color={color}>
                 {title}
             </Typography>
-            {transactions.length > 0
-                ? <Transaction transaction={transactions[0]} />
+            {transactions.length > 0 ?
+                lastTransaction ? <Transaction transaction={transactions[0]} />
+                    : transactions.map(transaction => {
+                        return <Transaction transaction={transaction} />
+                    })
                 : <Typography variant='h8' color={color}>No Transactions</Typography>}
         </Box>
     )

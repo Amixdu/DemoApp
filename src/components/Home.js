@@ -28,7 +28,7 @@ const Home = () => {
           <Balance />
           <IncomeExpense />
           <AddTransaction />
-          <TransactionHistory title="Last Transaction" color="common.white" />
+          <TransactionHistory title="Last Transaction" color="common.white" lastTransaction={true}/>
 
         </Box>
 
