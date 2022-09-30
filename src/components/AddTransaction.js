@@ -20,24 +20,24 @@ const AddTransaction = () => {
                 initialValues={{ 
                     title: '',
                     amount: '',
-                    picked: ''
+                    picked: 'income'
                 }}
                 onSubmit={(values, actions) => {
-                    console.log(actions)
+                    // console.log(actions)
                     const amt = values.amount;
+                    console.log(values.picked)
                     dispatch(values.picked === "income" ? addIncome(amt) : addExpense(amt))
                     actions.resetForm()
                 }}
             >
                 {props => (
                     <form onSubmit={props.handleSubmit}>
-                        {console.log(props)}
                         <FormField label="Title" type="text" change={props.handleChange} blur={props.handleBlur} value={props.values.title} name="title" />
                         <br />
                         <FormField label="Amount" type="number" change={props.handleChange} blur={props.handleBlur} value={props.values.amount} name="amount" />
                         <br />
 
-                        <RadioGroup row aria-labelledby="demo-row-radio-buttons-group-label" sx={{ color: "white"}}>
+                        <RadioGroup row aria-labelledby="demo-row-radio-buttons-group-label" sx={{ color: "white"}} defaultValue="income">
                             <label>
                                 <Radio sx={{ color:"whitesmoke",  '&.Mui-checked':{color: "whitesmoke"}}} name="picked" value="income" onChange={props.handleChange}/>
                                 Income
