@@ -30,7 +30,8 @@ const AddTransaction = () => {
                 validationSchema={validate}
                 onSubmit={(values, actions) => {
                     dispatch(addTransaction({ title: values.title, amount: values.amount, type: values.picked }))
-                    actions.resetForm()
+                    actions.setFieldValue("title","")
+                    actions.setFieldValue("amount", "")
                 }}
             >
                 {props => (
